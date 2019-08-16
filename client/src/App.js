@@ -8,7 +8,7 @@ import List from './component/List';
 import Modal from './component/itemModal';
 import { Container } from 'reactstrap';
 
-// gfd
+
 
 class App extends Component {
   render () {
