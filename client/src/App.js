@@ -5,6 +5,9 @@ import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import AppNavBar from './Component/AppNavBar';
 import List from './Component/List';
+import Modal from './Component/itemModal';
+import { Container } from 'reactstrap';
+
 
 class App extends Component {
   render () {
@@ -12,7 +15,10 @@ class App extends Component {
       <div>
         <Provider store={store}>
           <AppNavBar />
+          <Container>
+          <Modal />
           <List />
+          </Container>
         </Provider>
       </div>
     );

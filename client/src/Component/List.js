@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import {Container, ListGroup, ListGroupItem, Button} from 'reactstrap';
 import {CSSTransition, TransitionGroup } from 'react-transition-group';
-import uuid from 'uuid';
 import { connect } from 'react-redux';
-import { getItems } from '../actions/itemActions'
+import { getItems, deleteItem } from '../Actions/itemActions'
 import PropTypes from 'prop-types';
 
 class List extends Component {
@@ -11,34 +10,21 @@ class List extends Component {
     componentDidMount(){
         this.props.getItems();
     }
-    
+    onDeleteClick = (id) => {
+        this.props.deleteItem(id);
+    }
     render() {
         const { items } = this.props.item;
 
         return(
             <Container>
-                <Button
-                 color='dark' 
-                 style={{marginBottom: '2rem'}}
-                 onClick={() => {
-                     const name = prompt('Enter Item');
-                     if(name){
-                         this.setState(state => ({
-                             items:[...state.items, {id:uuid(), name}]
-                         }));
-                     }
-                 }}
-                 >Add Item</Button>
                  <ListGroup>
                      <TransitionGroup className="list">
-                         {items.map(({id, name}) => (
-                             <CSSTransition key={id} classNames="fade" timeout={450}>
+                         {items.map(({_id, name}) => (
+                             <CSSTransition key={_id} classNames="fade" timeout={450}>
                                  <ListGroupItem>
-                                     <Button className="removeBTN" color="danger" size="sm" onClick={() =>{
-                                         this.setState(state => ({
-                                             items:state.items.filter(item => item.id !== id)
-                                         }));
-                                     }}>
+                                     <Button className="removeBTN" color="danger" size="sm" onClick=
+                                     {this.onDeleteClick.bind(this, _id)}>
                                          &times;
                                      </Button>
                                      {name}
@@ -54,6 +40,7 @@ class List extends Component {
 
 List.protoType = {
     getItems: PropTypes.func.isRequired,
+    deleteItem: PropTypes.func,
     item: PropTypes.object.isRequired
 }
 
@@ -61,4 +48,4 @@ const mapStateToProps = (state) => ({
     item: state.item
 })
 
-export default connect(mapStateToProps, { getItems })(List);
+export default connect(mapStateToProps, { getItems, deleteItem })(List);
