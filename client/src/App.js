@@ -3,9 +3,9 @@ import { Provider } from 'react-redux';
 import store from './store';
 import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
-import AppNavBar from './Component/AppNavBar';
-import List from './Component/List';
-import Modal from './Component/itemModal';
+import AppNavBar from './component/AppNavBar';
+import List from './component/List';
+import Modal from './component/itemModal';
 import { Container } from 'reactstrap';
 
 

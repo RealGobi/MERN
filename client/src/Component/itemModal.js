@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input } from 'reactstrap';
-import { connect } from 'react-redux';
-import { addItem } from '../Actions/itemActions';
+import React, { Component } from './node_modules/react';
+import { Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input } from './node_modules/reactstrap';
+import { connect } from './node_modules/react-redux';
+import { addItem } from '../actions/itemActions';
 
 
 class ItemModal extends Component {
