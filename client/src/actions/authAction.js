@@ -20,15 +20,17 @@ export const loadUser = () => (dispatch, getState) => {
  
     axios
     .get('api/auth/user', tokenConfig(getState))
-    .then(res => dispatch({
+    .then(res => 
+      dispatch({
         type:USER_LOADED,
         payload:res.data
-    }))
+    })
+    )
     .catch(err => {
         dispatch(returnErrors(err.response.data, err.response.status));
         dispatch({
             type: AUTH_ERROR
-        })
+        });
     })
 } 
 // Register User
@@ -108,7 +110,7 @@ export const tokenConfig = getState => {
        // headers
        const config = {
            headers: {
-               "Content-type":"appication/json"
+               "Content-type" : "application/json"
            }
        }
        if(token){
