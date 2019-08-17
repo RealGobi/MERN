@@ -7,6 +7,14 @@ import PropTypes from 'prop-types';
 
 class List extends Component {
 
+
+    static protoType = {
+        getItems: PropTypes.func.isRequired,
+        deleteItem: PropTypes.func,
+        item: PropTypes.object.isRequired,
+        isAuthenticated: PropTypes.bool
+    }
+
     componentDidMount(){
         this.props.getItems();
     }
@@ -23,10 +31,14 @@ class List extends Component {
                          {items.map(({_id, name}) => (
                              <CSSTransition key={_id} classNames="fade" timeout={450}>
                                  <ListGroupItem>
+                                     { this.props.isAuthenticated ?
                                      <Button className="removeBTN" color="danger" size="sm" onClick=
                                      {this.onDeleteClick.bind(this, _id)}>
                                          &times;
                                      </Button>
+                                    :
+                                    null
+                                    }
                                      {name}
                                  </ListGroupItem>
                              </CSSTransition>
@@ -38,14 +50,11 @@ class List extends Component {
     }
 }
 
-List.protoType = {
-    getItems: PropTypes.func.isRequired,
-    deleteItem: PropTypes.func,
-    item: PropTypes.object.isRequired
-}
+
 
 const mapStateToProps = (state) => ({
-    item: state.item
+    item: state.item,
+    isAuthenticated: state.auth.isAuthenticated
 })
 
 export default connect(mapStateToProps, { getItems, deleteItem })(List);
