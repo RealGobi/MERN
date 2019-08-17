@@ -7,10 +7,14 @@ import AppNavBar from './component/AppNavBar';
 import List from './component/List';
 import Modal from './component/itemModal';
 import { Container } from 'reactstrap';
+import { loadUser } from './actions/authAction';
 
 
 
 class App extends Component {
+  componentDidMount(){
+    store.dispatch(loadUser());
+  }
   render () {
     return (
       <div>

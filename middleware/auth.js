@@ -6,7 +6,9 @@ function auth (req, res, next) {
 
     // check token
 
-    if(!token)  res.status(401).json({ msg: 'Du har ej tillträde!' })
+    if(!token)  
+    
+    return res.status(401).json({ msg: 'Du har ej tillträde!!!!' })
 
     try {
      // verify token
