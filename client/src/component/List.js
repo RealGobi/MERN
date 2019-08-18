@@ -28,9 +28,9 @@ class List extends Component {
             <Container>
                  <ListGroup>
                      <TransitionGroup className="list">
-                         {items.map(({_id, name}) => (
+                         {items.map(({_id, name, info}) => (
                              <CSSTransition key={_id} classNames="fade" timeout={450}>
-                                 <ListGroupItem>
+                                 <ListGroupItem style={{marginTop:'2rem'}}>
                                      { this.props.isAuthenticated ?
                                      <Button className="removeBTN" color="danger" size="sm" onClick=
                                      {this.onDeleteClick.bind(this, _id)}>
@@ -40,6 +40,8 @@ class List extends Component {
                                     null
                                     }
                                      {name}
+                                     <hr />
+                                     {info}
                                  </ListGroupItem>
                              </CSSTransition>
                          ))}

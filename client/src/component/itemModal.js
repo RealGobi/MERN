@@ -8,7 +8,8 @@ import PropTypes from 'prop-types';
 class ItemModal extends Component {
     state = {
         modal: false,
-        name:''
+        name:'',
+        info:''
     }
 
     static propTypes = {
@@ -22,13 +23,15 @@ class ItemModal extends Component {
     }
     onChange = e => {
         this.setState({ [e.target.name]: e.target.value });
+        this.setState({ [e.target.info]: e.target.info });
       };
     
       onSubmit = e => {
         e.preventDefault();
     
         const newItem = {
-          name: this.state.name
+          name: this.state.name,
+          info: this.state.info
         };
     
         // Add item via addItem action
@@ -58,11 +61,18 @@ class ItemModal extends Component {
                     <ModalBody>
                         <Form  onSubmit={this.onSubmit}>
                             <FormGroup>
-                                <Label for="item">Item</Label>
+                                <Label for="item">Produkt:</Label>
                                 <Input 
                                 type="text"
                                 name="name"
                                 id="item"
+                                onChange={this.onChange}
+                                />
+                                <Label for="info">Beskrivning:</Label>
+                                <Input 
+                                type="textarea"
+                                name="info"
+                                id="info"
                                 onChange={this.onChange}
                                 />
                                 <Button 
@@ -70,7 +80,7 @@ class ItemModal extends Component {
                                 style={{marginTop:'2rem'}}
                                 block
                                 >
-                                    Add Item
+                                    Lägg till produkt
                                 </Button>
                             </FormGroup>
                         </Form>
