@@ -48,7 +48,7 @@ class ItemModal extends Component {
                 color='dark'
                 style={{marginBottom:'2rem'}}
                 onClick={this.toggle}>
-                Add Item
+                Lägg till produkt
                 </Button> 
                 :
                  <h5 className="mb-3 ml-4">
@@ -57,7 +57,7 @@ class ItemModal extends Component {
                 <Modal
                 isOpen={this.state.modal}
                 toggle={this.toggle}>
-                    <ModalHeader toggle={this.toggle}>Add to list!</ModalHeader>
+                    <ModalHeader toggle={this.toggle}>Lägg till:</ModalHeader>
                     <ModalBody>
                         <Form  onSubmit={this.onSubmit}>
                             <FormGroup>
