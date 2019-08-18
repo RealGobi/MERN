@@ -39,7 +39,7 @@ class List extends Component {
                                     :
                                     null
                                     }
-                                     {name}
+                                    <strong>{name}</strong>
                                      <hr />
                                      {info}
                                  </ListGroupItem>
