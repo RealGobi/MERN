@@ -8,6 +8,7 @@ import List from './component/List';
 import Modal from './component/itemModal';
 import { Container } from 'reactstrap';
 import { loadUser } from './actions/authAction';
+import Form from './component/Forms';
 
 
 
@@ -23,6 +24,7 @@ class App extends Component {
           <Container>
           <Modal />
           <List />
+          <Form />
           </Container>
         </Provider>
       </div>
